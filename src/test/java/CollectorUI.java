@@ -40,6 +40,8 @@ public class CollectorUI extends JFrame {
 
         addWebsiteButton(mainJPanel);
 
+        //addCloseButton(mainJPanel);
+
         this.add(mainJPanel);
         this.pack();
         this.setVisible(true);
@@ -264,13 +266,12 @@ public class CollectorUI extends JFrame {
     }
 
     private void collectEventHandler() throws IOException, InterruptedException {
-        outputLabel.get(0).setText("Beginning Collection");
         commentCollector = new Collector();
         Collector.setupWebdriverChromeDriver();
         commentCollector.setup(URL);
         commentCollector.startSteamCollection();
         commentCollector.teardown();
         outputLabel.get(0).setText("Collection Complete");
-
+        System.out.println(outputLabel.size());
     }
 }
