@@ -253,13 +253,18 @@ public class CollectorUI extends JFrame {
 
     private void addWebsiteButton(JPanel panel1) {
         panel1.add(new HyperlinkText(UIUtils.BUTTON_TEXT_WEBSITE, 578, 300, () -> {
+            try {
 
+                Desktop.getDesktop().browse(new URI("https://hxc34.github.io/"));
+
+            } catch (IOException | URISyntaxException e1) {
+                e1.printStackTrace();
+            }
         }));
     }
 
     private void collectEventHandler() throws IOException, InterruptedException {
-
-
+        outputLabel.get(0).setText("Beginning Collection");
         commentCollector = new Collector();
         Collector.setupWebdriverChromeDriver();
         commentCollector.setup(URL);
